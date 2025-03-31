@@ -1,35 +1,50 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Три колонки */
+  grid-template-rows: repeat(3, auto); /* Три рядки */
+  gap: 10px; /* Відступи між елементами */
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  transition: grid-template-columns 0.3s ease-in-out; /* Анімація переходу */
+}
+
+.gallery-item {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, border 0.3s; /* Плавний ефект трансформації та рамки */
+}
+
+.gallery-item:hover {
+  transform: scale(1.05); /* Збільшення елементу при наведенні */
+  border: 2px solid #007bff; /* Додавання кольорової рамки */
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px; /* Закруглені кути */
+  object-fit: cover; /* Забезпечення гарного вигляду зображень */
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
   .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    list-style: none;
-    padding: 0;
-    justify-content: center;
+      grid-template-columns: repeat(2, 1fr); /* Дві колонки на планшетах */
   }
-  
-  .gallery-item {
-    flex-basis: calc(33.333% - 10px);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+}
+
+@media (max-width: 480px) {
+  .gallery {
+      grid-template-columns: repeat(1, 1fr); /* Одна колонка на мобільних */
   }
-  
-  .gallery-item:hover {
-    transform: scale(1.05);
-  }
-  
-  .gallery-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 5px;
-  }
-  
+}
